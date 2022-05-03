@@ -25,7 +25,7 @@ class _EditFormState extends State<EditForm> {
       ),
       body: Column(
         children: [
-          StockFormScreen(
+          StockForm(
             stock: stock,
             submit: _submit,
           ),

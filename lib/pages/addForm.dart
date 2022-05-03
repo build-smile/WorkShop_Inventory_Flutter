@@ -22,7 +22,7 @@ class _AddFormState extends State<AddForm> {
       appBar: AppBar(
         title: Text('Add Stock'),
       ),
-      body: StockFormScreen(submit: _submit, stock: stock),
+      body: StockForm(submit: _submit, stock: stock),
     );
   }
 
