@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../models/login.dart';
 
 class UserAPI {
@@ -12,7 +11,10 @@ class UserAPI {
     var urlApi = Uri.parse('$url/user/');
     final response = await http.post(urlApi,
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'username': username, 'password': password}));
+        body: jsonEncode({
+          'username': username,
+          'password': password,
+        }));
     print(response.statusCode);
     if (response.statusCode == 200) {
       return 'Register Complete';
@@ -27,9 +29,14 @@ class UserAPI {
       {required String username, required String password}) async {
     var urlApi = Uri.parse('$url/token');
     final response = await http.post(urlApi,
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
         encoding: Encoding.getByName('utf-8'),
-        body: {'username': username, 'password': password});
+        body: {
+          'username': username,
+          'password': password,
+        });
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       var data = Login.fromJson(result);

@@ -12,7 +12,7 @@ String stockToJson(List<Stock> data) =>
 
 class Stock {
   Stock({
-    this.id = -1,
+    this.id = 0,
     this.description = '',
     this.imageName,
     this.price = 0,
@@ -33,8 +33,8 @@ class Stock {
         id: json["id"],
         description: json["description"],
         imageName: json["image_name"],
-        price: double.parse(json["price"].toString()),
-        stock: double.parse(json["stock"].toString()),
+        price: json["price"].toDouble(),
+        stock: json["stock"].toDouble(),
         createdDate: DateTime.parse(json["created_date"]),
         updatedDate: DateTime.parse(json["updated_date"]),
       );

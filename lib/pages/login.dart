@@ -21,24 +21,18 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Container(
             margin: EdgeInsets.all(50),
-            child: Column(
-              children: [
-                Image.asset(
-                  'images/inventory.png',
-                  width: 150,
-                  height: 150,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Inventory',
-                  style: Theme.of(context).textTheme.headline1,
-                )
-              ],
-            ),
+            child: FlutterLogo(),
+            width: 150,
+            height: 150,
           ),
-          UserForm(submit: login)
+          SizedBox(
+            height: 10,
+          ),
+          UserForm(submit: login),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/register'),
+            child: Text('Need an Account'),
+          )
         ],
       )),
     );
@@ -51,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (login == null) {
       SnackBarHelper.show(
           context: context, msg: 'Invalid user', color: Colors.red);
+      EasyLoading.dismiss();
       return;
     }
     userAPI.storeToken(token: login.accessToken);

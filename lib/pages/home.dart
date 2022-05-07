@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<dynamic> pages = [
     StockList(),
-    Center(child: Center(child: Text('B'))),
+    Center(child: Center(child: Text('Setting'))),
   ];
   @override
   Widget build(BuildContext context) {

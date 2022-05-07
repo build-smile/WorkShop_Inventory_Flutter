@@ -16,31 +16,35 @@ class StockForm extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              title: _textFormField(
+              title: TextFormField(
                   initialValue: stock.description.toString(),
-                  label: 'Name',
-                  onValidate: (String? value) => _validateSting(value),
-                  onSave: (String? value) {
+                  decoration: InputDecoration(labelText: 'Name'),
+                  validator: _validateSting,
+                  onSaved: (String? value) {
                     stock.description = value;
                   }),
             ),
             ListTile(
-              title: _textFormField(
+              title: TextFormField(
                   initialValue: stock.stock.toString(),
-                  label: 'Stock',
-                  inputType: TextInputType.number,
-                  onValidate: (String? value) => _validateNumber(value),
-                  onSave: (String? value) {
+                  decoration: InputDecoration(
+                    labelText: 'Stock',
+                  ),
+                  keyboardType: TextInputType.number,
+                  validator: _validateNumber,
+                  onSaved: (String? value) {
                     stock.stock = double.parse(value!);
                   }),
             ),
             ListTile(
-              title: _textFormField(
+              title: TextFormField(
                   initialValue: stock.price.toString(),
-                  label: 'Price',
-                  inputType: TextInputType.number,
-                  onValidate: (String? value) => _validateNumber(value),
-                  onSave: (String? value) {
+                  decoration: InputDecoration(
+                    labelText: 'Price',
+                  ),
+                  keyboardType: TextInputType.number,
+                  validator: _validateNumber,
+                  onSaved: (String? value) {
                     stock.price = double.parse(value!);
                   }),
             ),
@@ -57,21 +61,6 @@ class StockForm extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _textFormField(
-      {required String label,
-      required Function onSave,
-      required Function onValidate,
-      required String initialValue,
-      TextInputType inputType = TextInputType.text}) {
-    return TextFormField(
-      initialValue: initialValue,
-      keyboardType: inputType,
-      onSaved: (String? value) => onSave(value),
-      validator: (String? value) => onValidate(value),
-      decoration: InputDecoration(labelText: label, hintText: label),
     );
   }
 

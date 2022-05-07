@@ -45,10 +45,6 @@ class UserForm extends StatelessWidget {
               },
             ),
           ),
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, '/register'),
-            child: Text('Need an Account'),
-          )
         ],
       ),
     );
