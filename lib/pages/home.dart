@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<dynamic> pages = [
+  List<Widget> pages = [
     StockList(),
     Center(child: Center(child: Text('Setting'))),
   ];
@@ -26,17 +26,19 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Image.asset(
-                    'images/inventory.png',
-                    width: 70,
-                    height: 70,
+                  Icon(
+                    Icons.inventory,
+                    size: 50,
+                    color: Colors.white,
                   ),
                   const Text(
-                    'INVENTORY',
+                    'Inventory Workshop',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
